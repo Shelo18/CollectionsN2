@@ -20,7 +20,7 @@ namespace CollectionsN2
             }
         }
 
-        public IEnumerator GetEnumerator() => new MyCollectionEnumerator(_items, _count);
+        public virtual IEnumerator GetEnumerator() => new MyCollectionEnumerator(_items, _count);
 
         public virtual void CopyTo(Array array, int index)
         {
