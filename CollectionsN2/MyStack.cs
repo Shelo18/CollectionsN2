@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 
 namespace CollectionsN2
@@ -45,6 +45,28 @@ namespace CollectionsN2
             {
                 array.SetValue(_items[_count - 1 - i], index + i);
             }
+        }
+
+        public override IEnumerator GetEnumerator() => new MyStackEnumerator(_items, _count);
+
+        private class MyStackEnumerator : IEnumerator
+        {
+            private readonly object[] _items;
+            private readonly int _count;
+            private int _index;
+
+            public MyStackEnumerator(object[] items, int count)
+            {
+                _items = items;
+                _count = count;
+                Reset();
+            }
+
+            public object Current => _items[_index];
+
+            public bool MoveNext() => --_index >= 0;
+
+            public void Reset() => _index = _count;
         }
     }
 }
